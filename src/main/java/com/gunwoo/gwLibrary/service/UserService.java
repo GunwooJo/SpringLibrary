@@ -42,6 +42,10 @@ public class UserService {
     return repository.findById(userId);
   }
 
+  public Optional<User> findByName(String username) {
+    return repository.findByName(username);
+  }
+
   public void validateDuplicateUser(User user) {
     repository.findByName(user.getName()).ifPresent(m->{
       throw new IllegalStateException("이미 존재하는 유저입니다.");

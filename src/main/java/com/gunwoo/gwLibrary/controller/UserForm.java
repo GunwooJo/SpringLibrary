@@ -1,15 +1,15 @@
 package com.gunwoo.gwLibrary.controller;
 
 public class UserForm {
-  private String name;
+  private String username;
   private String password;
 
   public String getName() {
-    return name;
+    return username;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setName(String username) {
+    this.username = username;
   }
   public String getPassword() {
     return password;

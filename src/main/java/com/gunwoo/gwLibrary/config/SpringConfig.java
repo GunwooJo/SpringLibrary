@@ -1,4 +1,4 @@
-package com.gunwoo.gwLibrary;
+package com.gunwoo.gwLibrary.config;
 
 import com.gunwoo.gwLibrary.repository.BookRepository;
 import com.gunwoo.gwLibrary.repository.JpaBookRepository;
