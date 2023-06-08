@@ -28,7 +28,7 @@ public class UserController {
   @PostMapping("/user/register")
   public String createUser(UserForm form) {
     User user = new User();
-    user.setName(form.getName());
+    user.setUsername(form.getUsername());
     user.setPassword(form.getPassword());
     user.setRole("user");
 
@@ -40,7 +40,7 @@ public class UserController {
   @PostMapping("user/login")
   public String loginUser(UserForm form) {
     User user = new User();
-    user.setName(form.getName());
+    user.setUsername(form.getUsername());
     user.setPassword(form.getPassword());
     userService.validateDuplicateUser(user);
     return "/book/list";

@@ -26,8 +26,8 @@ public class JpaUserRepository implements UserRepository{
   }
 
   @Override
-  public Optional<User> findByName(String name) {
-    List<User> user = em.createQuery("select u from User u where u.name=:name", User.class).setParameter("name", name).getResultList();
+  public Optional<User> findByName(String username) {
+    List<User> user = em.createQuery("select u from User u where u.username=:username", User.class).setParameter("username", username).getResultList();
     return user.stream().findAny();
   }
 

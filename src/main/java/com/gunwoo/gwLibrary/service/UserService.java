@@ -1,12 +1,7 @@
 package com.gunwoo.gwLibrary.service;
 
 import com.gunwoo.gwLibrary.domain.User;
-import com.gunwoo.gwLibrary.repository.MemoryUserRepository;
 import com.gunwoo.gwLibrary.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -47,7 +42,7 @@ public class UserService {
   }
 
   public void validateDuplicateUser(User user) {
-    repository.findByName(user.getName()).ifPresent(m->{
+    repository.findByName(user.getUsername()).ifPresent(m->{
       throw new IllegalStateException("이미 존재하는 유저입니다.");
     });
   }

@@ -22,7 +22,7 @@ public class MyUserDetailsService implements UserDetailsService {
     User user = result.orElseThrow(()-> new UsernameNotFoundException("없는 회원입니다."));
 
     return org.springframework.security.core.userdetails.User.builder()
-      .username(user.getName())
+      .username(user.getUsername())
       .password(user.getPassword())
       .roles(user.getRole())
       .build();
