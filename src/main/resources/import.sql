@@ -1,0 +1,1 @@
+insert into `user` (`book_id`, `id`, `password`, `role`, `username`) values (null, 1000, '$2a$10$bqy.d7Od0OHc9MGjCG8aouh9rU38RMqiC1xYW6bUC38M3ptv0bfkG', 'admin', 'kanggi1997');

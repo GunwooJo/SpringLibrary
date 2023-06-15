@@ -2,6 +2,9 @@ package com.gunwoo.gwLibrary.service;
 
 import com.gunwoo.gwLibrary.domain.User;
 import com.gunwoo.gwLibrary.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,14 +19,19 @@ import java.util.Optional;
 * */
 
 @Transactional
+@Service
 public class UserService {
   private final UserRepository repository;
+  private final PasswordEncoder passwordEncoder;
 
-  public UserService(UserRepository repository) {
+  @Autowired
+  public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
     this.repository = repository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   public Long addUser(User user) {
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
     validateDuplicateUser(user);
     repository.save(user);
     return user.getId();

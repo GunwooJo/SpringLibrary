@@ -1,9 +1,10 @@
 package com.gunwoo.gwLibrary.controller;
 
 import com.gunwoo.gwLibrary.domain.User;
-import com.gunwoo.gwLibrary.repository.MemoryUserRepository;
 import com.gunwoo.gwLibrary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,6 @@ public class UserController {
     user.setUsername(form.getUsername());
     user.setPassword(form.getPassword());
     user.setRole("user");
-
     userService.addUser(user);
 
     return "redirect:/user/list";
@@ -43,10 +43,18 @@ public class UserController {
     user.setUsername(form.getUsername());
     user.setPassword(form.getPassword());
     userService.validateDuplicateUser(user);
-    return "/book/list";
+    return "redirect:/user/dashboard";
+  }
+
+  @GetMapping("/user/dashboard")
+  public String dashboardPage(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user, Model model) {
+    model.addAttribute("username", user.getUsername());
+    model.addAttribute("role", user.getAuthorities());
+    return "/user/dashboard";
   }
 
   @GetMapping("/user/list")
+  @PreAuthorize("hasRole('admin')")
   public String userList(Model model) {
     List<User> userList = userService.findUsers();
     model.addAttribute("userList", userList);

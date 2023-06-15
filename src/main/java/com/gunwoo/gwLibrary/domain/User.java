@@ -1,6 +1,7 @@
 package com.gunwoo.gwLibrary.domain;
 
 import jakarta.persistence.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 

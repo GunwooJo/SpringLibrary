@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+// jpa에 대한 좋은 설명: https://jiwondev.tistory.com/140
 public class JpaBookRepository implements BookRepository{
 
   private final EntityManager em;

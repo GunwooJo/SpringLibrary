@@ -1,5 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>유저목록</title>
+  <meta charset="UTF-8"/>
+</head>
 <body>
 <div class="container">
   <div>
@@ -13,7 +17,7 @@
       <tbody>
       <tr th:each="user : ${userList}">
         <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
+        <td th:text="${user.username}"></td>
       </tr>
       </tbody>
     </table>
